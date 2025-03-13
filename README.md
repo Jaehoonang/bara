@@ -1,4 +1,4 @@
-# CAFFEEBARA
+# COFFEEBARA
 ## for coffee review platform ☕
     exchange experience about coffee and cafe
     apply recommender sys in coffee bean and coffee place for user's experience
