@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리뷰 작성</title>
+</head>
+<body>
+    <h1>리뷰 작성</h1>
+
+    <!-- 폼 제출 -->
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">제출</button>
+    </form>
+
+    <!-- 홈으로 돌아가는 링크 -->
+    <a href="{% url 'reviews:review_list' %}">리뷰 목록으로 돌아가기</a>
+</body>
+</html>
