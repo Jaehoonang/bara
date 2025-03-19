@@ -28,7 +28,7 @@ class UserManager(BaseUserManager):
         return user
 
 class User(AbstractBaseUser):
-    user_id = models.UUIDField(primary_key=True, default=uuid.uuid4, unique=True)
+    user_id = models.UUIDField(primary_key=True, default=uuid.uuid4(), unique=True)
     user_email = models.EmailField(unique=True)
     profile_image = models.ImageField(blank=True, null=True)
 
