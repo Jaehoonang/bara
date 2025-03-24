@@ -9,4 +9,8 @@
 #### 1st week of Mar 2025
     🐒PABLO
     MAKE USER MODEL AND REVIEW MODEL ✅
-    DEVELOP VIEWS OF USER AND REVIEW APPS
+    DEVELOP VIEWS OF USER AND REVIEW APPS✅
+#### 4th week of Mar 2025
+    🐒PABLO
+    Login & Logout Form
+    Main Page
