@@ -4,6 +4,8 @@ from django.db import models
 from django.db.models import UUIDField, ForeignKey
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.conf import settings
+from users.models import User
+
 
 # Create your models here.
 class TimeStampedModel(models.Model):
@@ -27,7 +29,7 @@ class Item(TimeStampedModel):
 
 class Review(TimeStampedModel):
     review_id = UUIDField(primary_key=True, default=uuid.uuid4(), unique=True)
-    review_from = ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, db_column="user_id")
+    review_from = ForeignKey(User, on_delete=models.CASCADE, related_name="reviews")
     review_about = ForeignKey(Item, on_delete=models.CASCADE, db_column="item_id")
     review_text = models.TextField(max_length=512)
     review_rating = models.IntegerField(choices=Rating_star, validators=[MinValueValidator(1), MaxValueValidator(5)],default=Rating_star.THREE)

@@ -34,7 +34,7 @@ class User(AbstractBaseUser):
 
     user_nickname = models.CharField(max_length=32, unique=True)
     user_firstname = models.CharField(max_length=32, blank=True)
-    user_lastname = models.CharField(max_length=32, blank=True)
+    user_lastname = models.CharField(max_length=32, unique=True, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     last_login = models.DateTimeField(auto_now=True)
