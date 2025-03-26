@@ -29,6 +29,14 @@ class signup_view(FormView):
     template_name = "users/signup.html"
     form_class = SignupForm
     success_url = reverse_lazy("users:login")
+    def form_valid(self, form):
+        form.save()
+        user_email = form.cleaned_data.get("user_email")
+        password = form.cleaned_data.get("password")
+        user = authenticate(self.request, username=user_email, password=password)
+        if user is not None:
+            login(self.request, user)
+        return super().form_valid(form)
 
     # if request.method == "POST":
     #     form = SignupForm(request.POST)

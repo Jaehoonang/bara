@@ -40,6 +40,14 @@ class SignupForm(forms.ModelForm):
         user = super().save(commit=False)
         user_email = self.cleaned_data.get("user_email")
         password = self.cleaned_data.get("password")
-        user.user_email = user_email
+        user.username = user_email
         user.set_password(password)
         user.save()
+        # user_nickname = self.cleaned_data.get("user_nickname")
+        # user_firstname = self.cleaned_data.get("user_firstname")
+        # user_lastname = self.cleaned_data.get("user_lastname")
+        # user = User.objects.create_user(user_email, user_email, password)
+        # user.user_nickname = user_nickname
+        # user.user_firstname = user_firstname
+        # user.user_lastname = user_lastname
+        # user.save()
