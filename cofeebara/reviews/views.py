@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .forms import ReviewPostForm, ItemPostForm
 from .models import Review, Item
 from django.urls import reverse
+from django.contrib import messages
 
 # Create your views here.
 def review(request):
@@ -18,7 +19,8 @@ def review_post(request):
         if form.is_valid():
             post = form.save(commit=False)
             post.save()
-            return redirect(reverse('reviews:review'))
+            messages.success(request, "등록되었습니다!")
+            return redirect(reverse('reviews:review_list'))
     else:
         form = ReviewPostForm()
 
@@ -31,9 +33,10 @@ def item_post(request):
         if form.is_valid():
             post = form.save(commit=False)
             post.save()
-            return redirect(reverse('reviews:item'))
-        else:
-            form = ItemPostForm()
+            messages.success(request, "등록되었습니다!")
+            return redirect(reverse('reviews:review_list'))
+    else:
+        form = ItemPostForm()
 
     return render(request, 'reviews/item_form.html', {'form':form})
 

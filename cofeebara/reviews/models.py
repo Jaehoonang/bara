@@ -24,7 +24,7 @@ class Rating_star(models.IntegerChoices):
 
 class Item(TimeStampedModel):
     item_id = UUIDField(primary_key=True, default=uuid.uuid4(), unique=True)
-    item_name = models.CharField(max_length=64)
+    item_name = models.CharField(max_length=64, unique=True)
     item_feature = models.TextField(max_length=512)
 
 class Review(TimeStampedModel):
