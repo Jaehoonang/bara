@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>전체 리뷰 목록</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+        nav {
+            margin-bottom: 20px;
+        }
+        li {
+            margin-bottom: 20px;
+            list-style: none;
+        }
+        hr {
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="{% url 'reviews:review_list' %}">리뷰 목록</a> |
+
+        {% if request.user.is_authenticated %}
+            <span>{{ request.user.username }}님 환영합니다!</span> |
+            <a href="{% url 'users:logout' %}">로그아웃</a>
+        {% else %}
+            <a href="{% url 'users:login' %}">로그인</a> |
+            <a href="{% url 'users:signup' %}">회원가입</a>
+        {% endif %}
+    </nav>
+    
+    <hr>
+
+    <h2>전체 리뷰 목록</h2>
+    <ul>
+        {% for review in reviews %}
+            <li>
+                <strong>{{ review.review_about }}</strong><br>
+                <p>{{ review.review_text }}</p>
+                <small>작성일: {{ review.create_at }}</small>
+            </li>
+        {% empty %}
+            <li>아직 등록된 리뷰가 없습니다.</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>

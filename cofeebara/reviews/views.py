@@ -7,7 +7,8 @@ from django.contrib import messages
 
 # Create your views here.
 def review(request):
-    return HttpResponse("review List")
+    reviews = Review.objects.all().order_by('-create_at')
+    return render(request, 'reviews/review_list.html', {'reviews':reviews})
 
 def item(request):
     return HttpResponse("item List")
